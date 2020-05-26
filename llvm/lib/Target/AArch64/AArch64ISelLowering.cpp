@@ -11940,7 +11940,7 @@ static SDValue replaceZeroVectorStore(SelectionDAG &DAG, StoreSDNode &St) {
 
   // It is beneficial to scalarize a zero splat store for 2 or 3 i64 elements or
   // 2, 3 or 4 i32 elements.
-  int NumVecElts = VT.getVectorNumElements();
+  int NumVecElts = VT.getVectorElementCount().Min;
   if (!(((NumVecElts == 2 || NumVecElts == 3) &&
          VT.getVectorElementType().getSizeInBits() == 64) ||
         ((NumVecElts == 2 || NumVecElts == 3 || NumVecElts == 4) &&
