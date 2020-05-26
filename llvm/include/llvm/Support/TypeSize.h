@@ -49,6 +49,18 @@ public:
   bool operator!=(const ElementCount& RHS) const {
     return !(*this == RHS);
   }
+  bool operator>(const ElementCount& RHS) const {
+    return Min > RHS.Min && Scalable == RHS.Scalable;
+  }
+  bool operator>=(const ElementCount& RHS) const {
+    return Min >= RHS.Min && Scalable == RHS.Scalable;
+  }
+  bool operator<(const ElementCount& RHS) const {
+    return Min < RHS.Min && Scalable == RHS.Scalable;
+  }
+  bool operator<=(const ElementCount& RHS) const {
+    return Min <= RHS.Min && Scalable == RHS.Scalable;
+  }
 };
 
 // This class is used to represent the size of types. If the type is of fixed
